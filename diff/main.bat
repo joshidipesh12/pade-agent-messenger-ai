@@ -20,5 +20,5 @@ echo Sending from %ADDR1%:%PORT1%
 echo Sending to %ADDR2%:%PORT2R%
 echo Receiving to %ADDR1%:%PORT1R%
 
-start cmd /k python3 diff_1.py -s %ADDR1% %PORT1% %ADDR2% %PORT2R%
-start cmd /k python3 diff_1.py -r %ADDR1% %PORT1R%
+start cmd /k python3 diff.py -s %ADDR1% %PORT1% %ADDR2% %PORT2R%
+start cmd /k python3 diff.py -r %ADDR1% %PORT1R%

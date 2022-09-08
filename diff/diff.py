@@ -9,7 +9,7 @@ import sys
 class MyReceiver(Agent):
 
     def __init__(self, addr, port):
-        self.name = get_name(addr, port-1)
+        self.name = get_name(addr, port - 1)
         self.aid = AID(name=f"{self.name}[R]@{addr}:{port}")
         super().__init__(self.aid)
 
@@ -19,9 +19,7 @@ class MyReceiver(Agent):
 
     def react(self, message: ACLMessage):
         super().react(message)
-        # print("---------- New Message ----------")
-        name = "[-- ME --]" if self.name == message.sender.localname + \
-            "[R]" else message.sender.localname
+        name = "[-- ME --]" if self.name == message.sender.localname else message.sender.localname
         print(f'\n{name} --> {message.content}\n')
 
 
@@ -54,8 +52,7 @@ class MySender(Agent):
         message.add_receiver(self.receiver)
         message.add_receiver(self.aid_r)
         self.add_all_agents(message.receivers)
-        message.set_content(
-            f"{mess if len(mess) > 0 else 'Empty Message'}")
+        message.set_content(f"{mess if len(mess) > 0 else 'Empty Message'}")
         self.send(message)
         print("\n----- Message sent -----\n")
         self.call_later(1.0, self.send_message)
